@@ -1,0 +1,26 @@
+{
+  "name": "Demo",
+  "port": "9000",
+  "routes": [
+    {
+      "key": "test_webhook",
+      "from": {
+        "method": "POST"
+      },
+      "to": {
+        "method": "POST",
+        "url": "http://localhost:8080/test"
+      }
+    },
+    {
+      "key": "test_endpoint",
+      "from": {
+        "method": "GET"
+      },
+      "to": {
+        "method": "GET",
+        "url": "http://localhost:3000/test"
+      }
+    }
+  ]
+}
