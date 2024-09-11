@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path"
 	"proxyserver/config"
 	"syscall"
 	"time"
@@ -37,7 +38,10 @@ func routes(m *http.ServeMux) *http.ServeMux {
 }
 
 func response(w http.ResponseWriter, r *http.Request) {
-	key := r.URL.Query().Get("route")
+
+	urlPath := r.URL.Path
+	key := path.Base(urlPath)
+
 	body := r.Body
 	if key == "" {
 		http.Error(w, "URL parameter is missing", http.StatusBadRequest)
